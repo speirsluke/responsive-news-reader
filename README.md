@@ -16,6 +16,17 @@ Let's create a responsive news reader website. To get the latest news the app wi
 
 - [ ] Add search functionality which allows the user to retrieve news about a particular topic
 
+## Instructions
+
+- Fork and clone this repo
+- Commit your changes frequently with short and descriptive commit messages
+- Create a pull request when complete
+- We want to see great looking webpages
+- Your code should have consistent indentation and sensible naming
+- Use lots of concise functions with a clear purpose
+- Add code comments where it is not immediately obvious what your code does
+- Your code should not throw errors and handle edge cases gracefully. For example not break if server fails to return expected results
+
 ## README.md
 
 When finished, include a README.md in your repo. This should explain what the project is, how to run it and how to use it. Someone who is not familiar with the project should be able to look at it and understand what it is and what to do with it.
