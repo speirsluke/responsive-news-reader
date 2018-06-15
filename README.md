@@ -8,6 +8,8 @@ Let's create a responsive news reader website. To get the latest news the app wi
 
 - [ ] Fetch news articles from News API and display them including title, image, description, publication, date and link to article.
 
+- [ ] Display images for tablet and desktop screens only
+
 - [ ] Implement a feature of your choice
 
 ## Stretch goals
