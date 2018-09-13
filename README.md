@@ -1,6 +1,6 @@
 # Responsive News Reader
 
-Let's create a responsive news reader website. To get the latest news the app will display we are going to use [News API](https://newsapi.org/). As with the Weather and Unsplash APIs, you will need to register with the service to obtain an API key.
+Let's create a responsive news reader website. To get the latest news the app will display we are going to use [News API](https://newsapi.org/). You will need to register with the service to obtain an API key.
 
 ## Objectives
 
@@ -27,8 +27,16 @@ Let's create a responsive news reader website. To get the latest news the app wi
 - Your code should have consistent indentation and sensible naming
 - Use lots of concise functions with a clear purpose
 - Add code comments where it is not immediately obvious what your code does
-- Your code should not throw errors and handle edge cases gracefully. For example not break if server fails to return expected results
+
+
+## Getting started
+
+- Take a look at the API documentation to see what the response data will look like
+- Start with pen and paper to draw what you want your new app to look like
+- Create a basic HTML page with your layout
+- Create a CSS file and a JS file and import them into the webpage.
+- Use `fetch` load some news items from API and insert them into your web page.
 
 ## README.md
 
-When finished, include a README.md in your repo. This should explain what the project is, how to run it and how to use it. Someone who is not familiar with the project should be able to look at it and understand what it is and what to do with it.
+When finished, update this README.md file in your repo. This should explain what the project is, how to run it and how to use it. Someone who is not familiar with the project should be able to look at it and understand what it is and what to do with it. This is quite important as you want to put projects in your portfolio and the information provided here will help a reviewer understand what it is they are looking at.
