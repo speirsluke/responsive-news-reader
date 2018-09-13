@@ -28,7 +28,6 @@ Let's create a responsive news reader website. To get the latest news the app wi
 - Use lots of concise functions with a clear purpose
 - Add code comments where it is not immediately obvious what your code does
 
-
 ## Getting started
 
 - Take a look at the API documentation to see what the response data will look like
