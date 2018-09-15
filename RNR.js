@@ -6,14 +6,9 @@ function append(parent, element){
   return parent.appendChild(element)
 } 
 let body = document.querySelector('body')
+let searchInput = document.querySelector('.search-input')
 
-
-fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=a62b82adc88947479824b7f88a2c44db')
-.then(function(response){
-  return response.json();  
-})
-.then(function(data){
-  console.log(data)
+function createNews(data) {
   let allArticles = data.articles; 
   return allArticles.map(function(article){
     let articleDiv = createNode('div');
@@ -23,27 +18,77 @@ fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=
     let image = createNode('img')
     let content = createNode('p'); 
     let contentLink = createNode('a'); 
+    
+    if (article.content !== null) {
+        articleDiv.className = 'article-div';
 
-    headline.textContent = `${article.title}`
+        headline.textContent = `${article.title}`;
+        headline.className = 'article-headline';
     
-    author.textContent = `Written by ${article.author}`
+        author.className = 'article-author';
+        if (article.author == null) {
+          author.textContent = 'Author unknown';
+        } else if (article.author == "") {
+          author.textContent = 'Author unknown';
+        } else {
+        author.textContent = `Written by ${article.author}`;
+        }
     
-    date.textContent = `Published on ${article.publishedAt}`
+        date.textContent = `Published on ${article.publishedAt}`;
+        date.className = 'article-date'
     
-    image.src = `${article.urlToImage}`;
-    image.className = 'article-image';
+        image.src = `${article.urlToImage}`;
+        image.className = 'article-image';
+        
+        content.textContent = `${article.content}`
+        content.className = 'article-content'
     
-    content.textContent = `${article.content}`
-
-    contentLink.href = `${article.url}`
-    contentLink.textContent = "Read more"
-    
-    append(body, articleDiv);
-    append(articleDiv, headline);
-    append(articleDiv, author)
-    append(articleDiv, date)
-    append(articleDiv, image)
-    append(articleDiv, content)
-    append(articleDiv, contentLink)
+        contentLink.href = `${article.url}`
+        contentLink.textContent = "Read more"
+        contentLink.className = 'article-link'
+        
+        append(body, articleDiv);
+        append(articleDiv, headline);
+        append(articleDiv, author)
+        append(articleDiv, date)
+        append(articleDiv, image)
+        append(articleDiv, content)
+        append(articleDiv, contentLink)
+    }
   })
-}).catch(console.log)
+}
+
+if (searchInput.value !== "") {
+  createNews(word);
+} else {
+  newsDefault();
+}
+
+function newSearch(word){
+return fetch(`https://newsapi.org/v2/everything?q=${word}&apiKey=a62b82adc88947479824b7f88a2c44db`)
+.then(function(response){
+  return response.json();
+})
+.then(function(data){
+  createNews(data)
+})
+}
+ 
+function newsDefault() {
+fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a62b82adc88947479824b7f88a2c44db`)
+.then(function(response){
+  return response.json();  
+})
+.then(function(data){
+  createNews(data);
+})
+}
+
+const submit = document.querySelector('.search');
+submit.addEventListener('submit', function(event){
+  event.preventDefault()
+  console.log(searchInput.value)
+  newSearch(searchInput.value)
+})
+
+

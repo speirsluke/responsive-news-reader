@@ -1,4 +1,117 @@
+
+/* .navbar {
+    display: flex; 
+    width: 100%;
+    overflow: hidden;
+    position: relative; 
+    background-color: snow;
+    max-height: 50px;
+    border: solid; 
+    border-width: 5px; 
+    border-color: lavenderblush;
+    margin-left: -5px;
+    justify-content: space-around;
+} */
+
+.navbar-text {
+    text-align: center; 
+    font-size: 15px;
+}
+
+.navbar {
+    display: flex;
+    background-color: white;
+    border: solid; 
+    border-color: lavenderblush; 
+    position: fixed; 
+    overflow: hidden; 
+    justify-content: space-around;
+    top: 0;
+    width: 100%;
+    font-family: 'Arapey', serif;
+    font-size: 20px;
+    z-index: 1;
+    margin-left: -9.5px; 
+    }
+
+.navbar a{
+    text-decoration: none; 
+    color: black;
+}
+
+.search-input {
+    background-color: lavenderblush
+}
+
+
+
+
+
+
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color:pink;
+    flex: 1;
+}
+
+/* alter margin top for tablet and desktop */
+.article-div {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    background-color: lavender;
+    margin: 8% 2% 8% 2%;
+    border: solid; 
+    border-color: lavenderblush; 
+    border-width: 5px;
+    flex: 4;
+    flex-wrap: wrap; 
+
+}
+
+.article-headline {
+    font-size: 30px;
+    text-align: center; 
+}
+
+.article-author {
+    color: black; 
+    font-size: 20px;
+    text-align: center;
+}
+
+.article-date {
+    color: ; 
+    font-size: 15px; 
+    text-align: center;
+}
+
+
+/* take out all image classes from mobile */
 .article-image {
-width: 350px; 
-height: 300px;
+    width: 400px; 
+    height: 200px;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+.article-content { 
+    margin-left: 10%;
+    margin-right: 10%;
+    }
+
+.article-link { 
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+@media (min-width: 768px) {
+
 }
