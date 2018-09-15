@@ -101,8 +101,3 @@ submit.addEventListener('submit', function(event){
   }
 })
 
-homeIcon.addEventListener('click', function(event){
-  event.preventDefault()
-  newsDefault()
-})
-
