@@ -5,6 +5,11 @@ function createNode(element){
 function append(parent, element){
   return parent.appendChild(element)
 } 
+
+function deleteNode(parent, element) {
+  parent.removeChild(element)
+}
+
 let body = document.querySelector('body')
 let searchInput = document.querySelector('.search-input')
 
@@ -59,7 +64,7 @@ function createNews(data) {
 }
 
 if (searchInput.value !== "") {
-  createNews(word);
+  newSearch(searchInput.value)
 } else {
   newsDefault();
 }
@@ -83,6 +88,7 @@ fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a62b82adc8894747
   createNews(data);
 })
 }
+
 
 const submit = document.querySelector('.search');
 submit.addEventListener('submit', function(event){
