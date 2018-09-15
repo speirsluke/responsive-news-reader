@@ -10,8 +10,9 @@ function deleteNode(parent, element) {
   parent.removeChild(element)
 }
 
-let body = document.querySelector('body')
+let body = document.querySelector('.body')
 let searchInput = document.querySelector('.search-input')
+let homeIcon = document.querySelector('.home-icon')
 
 function createNews(data) {
   let allArticles = data.articles; 
@@ -92,9 +93,16 @@ fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a62b82adc8894747
 
 const submit = document.querySelector('.search');
 submit.addEventListener('submit', function(event){
-  event.preventDefault()
+  if (searchInput.value !== "") {
+    body.innerHTML = "";
+    event.preventDefault()
   console.log(searchInput.value)
   newSearch(searchInput.value)
+  }
 })
 
+homeIcon.addEventListener('click', function(event){
+  event.preventDefault()
+  newsDefault()
+})
 

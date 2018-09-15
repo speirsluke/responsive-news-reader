@@ -20,6 +20,7 @@
 
 .navbar {
     display: flex;
+    justify-content: space-around;
     background-color: white;
     border: solid; 
     border-color: lavenderblush; 
@@ -32,6 +33,7 @@
     font-size: 20px;
     z-index: 1;
     margin-left: -9.5px; 
+    margin-bottom: 15%;
     }
 
 .navbar a{
@@ -43,8 +45,10 @@
     background-color: lavenderblush
 }
 
-
-
+.home-icon {
+    height: 40px; 
+    width: 40px;
+}
 
 
 
