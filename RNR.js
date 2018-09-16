@@ -10,14 +10,19 @@ function deleteNode(parent, element) {
   parent.removeChild(element)
 }
 
-let body = document.querySelector('.body')
-let searchInput = document.querySelector('.search-input')
-let homeIcon = document.querySelector('.home-icon')
+
+let searchRes = createNode('h1');
+let body = document.querySelector('.body');
+let searchInput = document.querySelector('.search-input');
+let homeIcon = document.querySelector('.home-icon');
+const searchDiv = document.querySelector('.search-div');
+let header = document.querySelector('.header')
 
 function createNews(data) {
   let allArticles = data.articles; 
   return allArticles.map(function(article){
     let articleDiv = createNode('div');
+    
     let headline = createNode('h1');
     let author = createNode('h3');
     let date = createNode('p');
@@ -44,7 +49,7 @@ function createNews(data) {
         date.className = 'article-date'
     
         image.src = `${article.urlToImage}`;
-        image.className = 'article-image';
+        image.className = 'article-image img-grow hvrbox_background';
         
         content.textContent = `${article.content}`
         content.className = 'article-content'
@@ -86,18 +91,45 @@ fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a62b82adc8894747
   return response.json();  
 })
 .then(function(data){
+  searchRes.className = "search-res";
+  searchRes.textContent = "Todays top headlines:"
+  append(header, searchRes)
   createNews(data);
 })
 }
 
 
+
 const submit = document.querySelector('.search');
 submit.addEventListener('submit', function(event){
   if (searchInput.value !== "") {
+    
+    searchRes.textContent = "";
     body.innerHTML = "";
+
     event.preventDefault()
-  console.log(searchInput.value)
+    console.log(searchInput.value)
+
+  
+  append(header, searchRes)
+  searchRes.className = "search-res"
+  searchRes.textContent = `Displaying search results for: ${searchInput.value}`
+  searchRes.innerHTML = `${searchRes.textContent}` + '<br>' + '<br>'
   newSearch(searchInput.value)
   }
 })
 
+let home = document.querySelector('.navbar-icon')
+home.addEventListener('click', function(event){
+  event.preventDefault();
+  body.innerHTML = "";
+  searchDiv.innerHTML = "";
+  newsDefault(); 
+})
+
+// const artImg = document.querySelector('.img-grow');
+// const artCon = document.querySelector('.article-content');
+// artImg.addEventListener('click', function(event){
+//   artCon.innerHTML = '<style>' + 'display="flex' + '</style>'
+//   console.log(artCon)
+// })
