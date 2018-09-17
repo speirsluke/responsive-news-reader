@@ -17,6 +17,10 @@ let searchInput = document.querySelector('.search-input');
 let homeIcon = document.querySelector('.home-icon');
 const searchDiv = document.querySelector('.search-div');
 let header = document.querySelector('.header')
+const UK = document.querySelector('.UK');
+const USA = document.querySelector('.USA')
+const submit = document.querySelector('.search');
+let home = document.querySelector('.navbar-icon')
 
 function createNews(data) {
   let allArticles = data.articles; 
@@ -26,7 +30,8 @@ function createNews(data) {
     let headline = createNode('h1');
     let author = createNode('h3');
     let date = createNode('p');
-    let image = createNode('img')
+    let imageLink = createNode('a');
+    let image = createNode('img');
     let content = createNode('p'); 
     let contentLink = createNode('a'); 
     
@@ -48,9 +53,11 @@ function createNews(data) {
         date.textContent = `Published on ${article.publishedAt}`;
         date.className = 'article-date'
     
+        imageLink.href = `${article.url}`;
+
         image.src = `${article.urlToImage}`;
         image.className = 'article-image img-grow hvrbox_background';
-        
+
         content.textContent = `${article.content}`
         content.className = 'article-content'
     
@@ -62,7 +69,8 @@ function createNews(data) {
         append(articleDiv, headline);
         append(articleDiv, author)
         append(articleDiv, date)
-        append(articleDiv, image)
+        append(articleDiv, imageLink)
+        append(imageLink, image)
         append(articleDiv, content)
         append(articleDiv, contentLink)
     }
@@ -86,7 +94,7 @@ return fetch(`https://newsapi.org/v2/everything?q=${word}&apiKey=a62b82adc889474
 }
  
 function newsDefault() {
-fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a62b82adc88947479824b7f88a2c44db`)
+fetch(`https://newsapi.org/v2/top-headlines?country=gb&apiKey=a62b82adc88947479824b7f88a2c44db`)
 .then(function(response){
   return response.json();  
 })
@@ -98,9 +106,22 @@ fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a62b82adc8894747
 })
 }
 
+function newsUSA() {
+  fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=a62b82adc88947479824b7f88a2c44db`)
+  .then(function(response){
+    return response.json();  
+  })
+  .then(function(data){
+    searchRes.className = "search-res";
+    searchRes.textContent = "Todays top headlines:"
+    append(header, searchRes)
+    createNews(data);
+  })
+  }
 
 
-const submit = document.querySelector('.search');
+
+
 submit.addEventListener('submit', function(event){
   if (searchInput.value !== "") {
     
@@ -113,23 +134,30 @@ submit.addEventListener('submit', function(event){
   
   append(header, searchRes)
   searchRes.className = "search-res"
-  searchRes.textContent = `Displaying search results for: ${searchInput.value}`
+  searchRes.textContent = `Search results for: ${searchInput.value}`
   searchRes.innerHTML = `${searchRes.textContent}` + '<br>' + '<br>'
   newSearch(searchInput.value)
   }
 })
 
-let home = document.querySelector('.navbar-icon')
-home.addEventListener('click', function(event){
+
+UK.addEventListener('click', function(event){
   event.preventDefault();
   body.innerHTML = "";
   searchDiv.innerHTML = "";
   newsDefault(); 
 })
 
+USA.addEventListener('click', function(event){
+  event.preventDefault();
+  body.innerHTML = "";
+  searchDiv.innerHTML = "";
+  newsUSA(); 
+})
 // const artImg = document.querySelector('.img-grow');
 // const artCon = document.querySelector('.article-content');
 // artImg.addEventListener('click', function(event){
 //   artCon.innerHTML = '<style>' + 'display="flex' + '</style>'
 //   console.log(artCon)
 // })
+
